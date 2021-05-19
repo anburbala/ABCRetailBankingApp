@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { CustomerComponent } from './customer/customer.component';
 import { SearchComponent } from './search/search.component';
+import { FundtransferComponent } from './fundtransfer/fundtransfer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     HeaderComponent,
     CustomerComponent,
-    SearchComponent
+    SearchComponent,
+    FundtransferComponent
   ],
   imports: [
     BrowserModule,

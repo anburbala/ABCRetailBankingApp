@@ -1,4 +1,4 @@
-export interface ministatement{
+export interface statement{
     transactionDate : Date,
     transactionRemarks : string,
     transactionType : string,

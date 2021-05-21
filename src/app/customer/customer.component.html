@@ -1,1 +1,100 @@
+<div class="container">
+<div style="width: 500px; margin: auto;">
+<div *ngIf="submitted">
+    <h3>You successfully created a Customer!</h3>
+</div>
+<div class="submit-form">
+  <div *ngIf="!submitted">
+    <div class="form-group">
+      <label for="customerName">CustomerName</label>
+      <input
+        type="text"
+        class="form-control"
+        id="customerName"
+        required
+        [(ngModel)]="customer.customerName"
+        customerName="customerName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Gender">Gender</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Gender"
+        required
+        [(ngModel)]="customer.Gender"
+        Gender="Gender"
+      />
+    </div>
+    <div class="form-group">
+        <label for="accounttype">AccountType</label>
+        <input
+          class="form-control"
+          id="accounttype"
+          required
+          [(ngModel)]="customerAccount.accounttype"
+          accounttype="accounttype"
+        />
+      </div>
+      <div class="form-group">
+        <label for="balance">Opening Balance Amount</label>
+        <input
+          class="form-control"
+          id="balance"
+          required
+          [(ngModel)]="customerAccount.balance"
+          balance="balance"
+        />
+      </div>
+    <div class="form-group">
+      <label for="customerAddress">Address</label>
+      <input
+        class="form-control"
+        id="customerAddress"
+        required
+        [(ngModel)]="customer.customerAddress"
+        customerAddress="customerAddress"
+      />
+    </div>
+    <div class="form-group">
+        <label for="Phone">Phone</label>
+        <input
+          class="form-control"
+          id="customerPhone"
+          required
+          [(ngModel)]="customer.customerPhone"
+          customerPhone="customerPhone"
+        />
+      </div>
+      <div class="form-group">
+        <label for="customerEmailId">Email</label>
+        <input type="email"
+          class="form-control"
+          id="customerEmailId"
+          required
+          [(ngModel)]="customer.customerEmailId"
+          customerEmailId="customerEmailId"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"
+          class="form-control"
+          id="password"
+          required
+          [(ngModel)]="customer.password"
+          password="password"
+        />
+      </div>
+      <div class="text-center">
+    <button (click)="createCustomer()" class="btn btn-success mr-2">Create</button> 
+    <button class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
 
+  
+</div>
+
+</div>
+</div>

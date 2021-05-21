@@ -1,14 +1,16 @@
 export interface customer{
-    customername : string,
-    customerid : number,
-    accounts:account[],
-    address : string,
-    status : string
-    Phone : string,
-    emailId : string
+    customerName : string,
+    customerId : number,
+    customerAccounts:customerAccount[],
+    customerAddress : string,
+    customerstatus : string
+    customerPhone : string,
+    customerEmailId : string,
+    Gender : string,
+    password : string,
 }
 
-export interface account{
+export interface customerAccount{
      accountnumber : number,
      accounttype: string,
      balance : number,

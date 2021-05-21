@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { CustomerComponent } from './customer/customer.component';
 import { SearchComponent } from './search/search.component';
 import { FundtransferComponent } from './fundtransfer/fundtransfer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,12 @@ import { FundtransferComponent } from './fundtransfer/fundtransfer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

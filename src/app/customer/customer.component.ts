@@ -9,6 +9,7 @@ import { CustomerService } from '../services/customer.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
+
   accountData : customerAccount[] = [];
 
   error = new Subject<string>();
@@ -20,13 +21,15 @@ export class CustomerComponent implements OnInit {
 
   customer = {
     customerName: '',
-    gender : '',
+    Gender : '',
     customerAddress: '',
     customerPhone: '',
     customerEmailId:'',
     password : '',
+    confirmPassword : '',
     customerStatus: '',
     customerId:'',
+    userType:'',
   };
 
   customerAccount = {
@@ -65,26 +68,29 @@ export class CustomerComponent implements OnInit {
               result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
           }
           return +result;
-  }
+     }
 
     createCustomer() {
-      this.getAccountInformation();
-      let customer : customer = {
-      customerId : this.getRandomNumberBetween(this.min, this.max),
-      customerName : this.customer.customerName,
-      customerAddress : this.customer.customerAddress,
-      customerEmailId : this.customer.customerEmailId,
-      customerPhone : this.customer.customerPhone,
-      customerstatus : 'Active',
-      customerAccounts : this.accountData,
-      Gender : this.customer.gender,
-      password : this.customer.password,
-      };
+          this.getAccountInformation();
+          let customer : customer = {
+          customerId : this.getRandomNumberBetween(this.min, this.max),
+          customerName : this.customer.customerName,
+          customerAddress : this.customer.customerAddress,
+          customerEmailId : this.customer.customerEmailId,
+          customerPhone : this.customer.customerPhone,
+          customerstatus : 'Active',
+          customerAccounts : this.accountData,
+          Gender : this.customer.Gender,
+          password : this.customer.password,
+          confirmPassword : this.customer.confirmPassword,
+          userType : this.customer.userType,
+        };
 
-      this.customerService.create(customer)
+        this.customerService.create(customer)
         .subscribe(
             response => {
                 this.submitted = true;
+                console.log(response);
             },
             error => {
               this.error.next(error);

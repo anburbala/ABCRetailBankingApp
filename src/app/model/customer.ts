@@ -8,6 +8,8 @@ export interface customer{
     customerEmailId : string,
     Gender : string,
     password : string,
+    confirmPassword : string,
+    userType : string,
 }
 
 export interface customerAccount{

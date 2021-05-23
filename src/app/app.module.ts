@@ -13,6 +13,10 @@ import { SearchComponent } from './search/search.component';
 import { FundtransferComponent } from './fundtransfer/fundtransfer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './services/customer.service';
+import { CustomersummaryComponent } from './customersummary/customersummary.component';
+import { AuthserviceService } from './authservice.service';
+import { AuthenticationGuard } from './authentication.guard';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { CustomerService } from './services/customer.service';
     HeaderComponent,
     CustomerComponent,
     SearchComponent,
-    FundtransferComponent
+    FundtransferComponent,
+    CustomersummaryComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,7 @@ import { CustomerService } from './services/customer.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [CustomerService],
+  providers: [CustomerService,AuthserviceService,AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

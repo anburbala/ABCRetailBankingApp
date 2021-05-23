@@ -1,4 +1,4 @@
-<div class="container">
+
 <div style="width: 500px; margin: auto;">
 <div *ngIf="submitted">
     <h3>You successfully created a Customer!</h3>
@@ -14,29 +14,28 @@
         required
         [(ngModel)]="customer.customerName"
         customerName="customerName"
+        placeholder="Enter Customer Name"
       />
     </div>
     <div class="form-group">
       <label for="Gender">Gender</label>
-      <input
-        type="text"
-        class="form-control"
-        id="Gender"
-        required
-        [(ngModel)]="customer.Gender"
-        Gender="Gender"
-      />
+      <select [(ngModel)]="customer.Gender"class="browser-default custom-select form-control"  placeholder="Select Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>  
+        <option value="Transgender">Transgender</option>     
+      </select>
     </div>
-    <div class="form-group">
-        <label for="accounttype">AccountType</label>
-        <input
-          class="form-control"
-          id="accounttype"
-          required
-          [(ngModel)]="customerAccount.accounttype"
-          accounttype="accounttype"
-        />
-      </div>
+     <div class="form-group">
+      <label for="accounttype">Account Type</label>
+      <select [(ngModel)]="customerAccount.accounttype"class="browser-default custom-select form-control"  placeholder="Select Account Type">
+        <option value="Savings">Savings</option>
+        <option value="Current">Current</option>     
+        <option value="NRI">NRI</option>
+        <option value="Fixed">Fixed</option>
+        <option value="Recurring">Recurring</option>
+        <option value="Salary">Salary</option>
+      </select>
+    </div>
       <div class="form-group">
         <label for="balance">Opening Balance Amount</label>
         <input
@@ -45,6 +44,7 @@
           required
           [(ngModel)]="customerAccount.balance"
           balance="balance"
+          placeholder="Enter Opening Balance Amount"
         />
       </div>
     <div class="form-group">
@@ -55,6 +55,7 @@
         required
         [(ngModel)]="customer.customerAddress"
         customerAddress="customerAddress"
+        placeholder="Enter Address"
       />
     </div>
     <div class="form-group">
@@ -65,6 +66,7 @@
           required
           [(ngModel)]="customer.customerPhone"
           customerPhone="customerPhone"
+          placeholder="Enter Phone"
         />
       </div>
       <div class="form-group">
@@ -75,6 +77,7 @@
           required
           [(ngModel)]="customer.customerEmailId"
           customerEmailId="customerEmailId"
+          placeholder="Enter Email"
         />
       </div>
       <div class="form-group">
@@ -85,7 +88,26 @@
           required
           [(ngModel)]="customer.password"
           password="password"
+          placeholder="Enter Password"
         />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password"
+          class="form-control"
+          id="password"
+          required
+          [(ngModel)]="customer.password"
+          password="password"
+          placeholder="Enter Password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="User">User Type</label>
+        <select [(ngModel)]="customer.userType"class="browser-default custom-select form-control"  placeholder="Select User Type">
+          <option value="Admin">Admin</option>
+          <option value="Customer">Customer</option>  
+        </select>
       </div>
       <div class="text-center">
     <button (click)="createCustomer()" class="btn btn-success mr-2">Create</button> 
@@ -96,5 +118,4 @@
   
 </div>
 
-</div>
 </div>

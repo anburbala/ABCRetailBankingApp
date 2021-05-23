@@ -1,8 +1,45 @@
 {
-    "customerdetails":[
-       
+    "customerdetails": [
+      {
+        "customerId": 594970,
+        "customerName": "Test Customer",
+        "customerAddress": "Test Address",
+        "customerEmailId": "abc@abc.com",
+        "customerPhone": "9123456789",
+        "customerstatus": "Active",
+        "customerAccounts": [
+          {
+            "accountnumber": 7721228623,
+            "accounttype": "Savings",
+            "accountstatus": "Active",
+            "balance": "500"
+          }
+        ],
+        "Gender": "Male",
+        "password": "test@123",
+        "userType":"Admin",
+        "id": 1
+      },
+      {
+        "customerId": 734662,
+        "customerName": "Test Another Cutomer",
+        "customerAddress": "Test Another Address",
+        "customerEmailId": "def@def.com",
+        "customerPhone": "9123456789",
+        "customerstatus": "Active",
+        "customerAccounts": [
+          {
+            "accountnumber": 86867634,
+            "accounttype": "Salary",
+            "accountstatus": "Active",
+            "balance": "15000"
+          }
+        ],
+        "Gender": "Male",
+        "password": "anu@2123",
+        "userType": "customer",
+        "id": 2
+      }
     ],
-    "transactions":[
-        
-    ]        
-}
+    "transactions": []
+  }

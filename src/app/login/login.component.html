@@ -1,1 +1,30 @@
-<p>login works!</p>
+
+
+<form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
+    <div class="container">
+      <div class="col-xs-1 col-md-5 col-md-OffSet">
+        
+    <h2 class="form-signin-heading" style="text-align: center;">Please sign in</h2>
+  
+    <div class="form-group">
+    
+      <label for="inputemail" class="sr-only">Email:</label>
+      <input  type="email"  name="email" class="form-control" 
+      formControlName="email" placeholder="Email"  required autofocus>
+    
+    </div>
+      
+    <div class="form-group">
+      <label for="inputpassword" class="sr-only">Password</label>
+      <input type="password"  name="password" class="form-control" 
+      formControlName="password" placeholder="Password" required>
+    </div>
+    
+    <div style="padding-left:100px;">
+      <button type="submit" class="btn btn-primary mr-1">Login</button>
+      <button type="reset" class="btn btn-secondary">cancel</button>
+    </div>
+  </div>
+  </div>
+  </form>
+  

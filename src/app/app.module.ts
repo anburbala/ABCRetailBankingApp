@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgImageSliderModule } from 'ng-image-slider';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,10 +14,12 @@ import { SearchComponent } from './search/search.component';
 import { FundtransferComponent } from './fundtransfer/fundtransfer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './services/customer.service';
-import { CustomersummaryComponent } from './customersummary/customersummary.component';
+import { CustomersummaryComponent } from './customer/customersummary.component';
 import { AuthserviceService } from './authservice.service';
 import { AuthenticationGuard } from './authentication.guard';
 import { LogoutComponent } from './logout/logout.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -27,10 +30,11 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     HeaderComponent,
     CustomerComponent,
+    CustomersummaryComponent,
     SearchComponent,
     FundtransferComponent,
-    CustomersummaryComponent,
-    LogoutComponent
+    LogoutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgImageSliderModule,
   ],
   providers: [CustomerService,AuthserviceService,AuthenticationGuard],
   bootstrap: [AppComponent]

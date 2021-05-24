@@ -9,7 +9,7 @@ import { CustomerService } from '../services/customer.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-
+  //isAddMode : boolean = false;
   accountData : customerAccount[] = [];
 
   error = new Subject<string>();

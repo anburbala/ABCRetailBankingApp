@@ -1,45 +1,66 @@
 {
-    "customerdetails": [
-      {
-        "customerId": 594970,
-        "customerName": "Test Customer",
-        "customerAddress": "Test Address",
-        "customerEmailId": "abc@abc.com",
-        "customerPhone": "9123456789",
-        "customerstatus": "Active",
-        "customerAccounts": [
-          {
-            "accountnumber": 7721228623,
-            "accounttype": "Savings",
-            "accountstatus": "Active",
-            "balance": "500"
-          }
-        ],
-        "Gender": "Male",
-        "password": "test@123",
-        "userType":"Admin",
-        "id": 1
-      },
-      {
-        "customerId": 734662,
-        "customerName": "Test Another Cutomer",
-        "customerAddress": "Test Another Address",
-        "customerEmailId": "def@def.com",
-        "customerPhone": "9123456789",
-        "customerstatus": "Active",
-        "customerAccounts": [
-          {
-            "accountnumber": 86867634,
-            "accounttype": "Salary",
-            "accountstatus": "Active",
-            "balance": "15000"
-          }
-        ],
-        "Gender": "Male",
-        "password": "anu@2123",
-        "userType": "customer",
-        "id": 2
-      }
-    ],
-    "transactions": []
-  }
+  "customerdetails": [
+    {
+      "customerId": 594970,
+      "customerName": "Test Customer",
+      "customerAddress": "Test Address",
+      "customerEmailId": "abc@abc.com",
+      "customerPhone": "9123456789",
+      "customerstatus": "Active",
+      "customerAccounts": [
+        {
+          "accountnumber": 7721228623,
+          "accounttype": "Savings",
+          "accountstatus": "Active",
+          "balance": "500"
+        }
+      ],
+      "Gender": "Male",
+      "password": "test@123",
+      "userType": "Admin",
+      "id": 1
+    },
+    {
+      "customerId": 734662,
+      "customerName": "Test Another Cutomer",
+      "customerAddress": "Test Another Address",
+      "customerEmailId": "def@def.com",
+      "customerPhone": "9123456789",
+      "customerstatus": "Active",
+      "customerAccounts": [
+        {
+          "accountnumber": 86867634,
+          "accounttype": "Salary",
+          "accountstatus": "Active",
+          "balance": "15000"
+        }
+      ],
+      "Gender": "Male",
+      "password": "anu@123",
+      "userType": "customer",
+      "id": 2
+    },
+    {
+      "customerId": 654028,
+      "customerName": "Test Customer 3",
+      "customerAddress": " Test Address Customer 3",
+      "customerEmailId": "ghi@ghi.com",
+      "customerPhone": "9123456789",
+      "customerstatus": "Active",
+      "customerAccounts": [
+        {
+          "accountnumber": 3254527628,
+          "accounttype": "NRI",
+          "accountstatus": "Active",
+          "balance": "50000"
+        }
+      ],
+      "Gender": "Male",
+      "password": "cus@123",
+      "confirmPassword": "",
+      "userType": "Customer",
+      "id": 3
+    }
+  ],
+  "transactions": []
+}

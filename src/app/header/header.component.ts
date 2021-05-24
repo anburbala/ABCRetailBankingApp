@@ -8,6 +8,7 @@ import { AuthserviceService } from '../authservice.service';
 })
 export class HeaderComponent implements OnInit {
   isUserLoggedIn : boolean = false;
+  
   constructor(private authservice: AuthserviceService) {
 
         // Subscribe here, this will automatically update 
@@ -15,18 +16,17 @@ export class HeaderComponent implements OnInit {
         this.authservice.isUserLoggedIn.subscribe( value => {
             this.isUserLoggedIn = value;
         });
+      
     }
 
   ngOnInit(): void {
-    // let storeLoginData = localStorage.getItem("isUserLoggedIn");
-    //   console.log("StoreData: " + storeLoginData);
-
-    //   if( storeLoginData != null && storeLoginData == "true")
-    //      this.isUserLoggedIn = true;
-    //   else
-    //      this.isUserLoggedIn = false;
-   }
+  //   let storeLoginData = localStorage.getItem("isAdmin");
+  //     if( storeLoginData != null && storeLoginData == "true")
+  //        this.isAdmin = true;
+  //     else
+  //        this.isAdmin = false;
+  //  }
 
 }
 
-
+}

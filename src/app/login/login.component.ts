@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
     this.authservice.login(this.email,this.password)
     .subscribe(resp =>
       {
-        console.log("CustomerInfo " + resp); 
         localStorage.setItem("isAdmin",resp.userType === "Admin" ? "true" : "false");
         localStorage.setItem("isUserLoggedIn","true");
         this.authservice.isUserLoggedIn.next(true);
+        
         if(resp.userType === "Admin") 
         {
           this.router.navigate(['/customersummary-component']); 

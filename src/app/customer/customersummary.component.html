@@ -1,0 +1,35 @@
+<div class="container">
+    <header style="text-align: center;"><h3><b>Customer Details</b></h3></header>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <ul class="list-group">
+            <li class="list-group-item" style="background-color:lightblue;"
+            *ngFor="let details of customerdetails"
+            > 
+            <span class="badge" style="float:right;" > 
+                {{ details.customerstatus }}
+               </span>
+                <span><strong>Customer ID : {{details.customerId}}</strong></span> | <br>
+                <span><strong>Customer Name : {{details.customerName}}</strong></span> | <br>
+                <span><strong>Address : {{details.customerAddress}}</strong></span> | <br>
+                <span><strong>Phone : {{details.customerPhone}}</strong></span> | <br>
+                <span><strong>EmailID : {{details.customerEmailId}}</strong></span> | <br>
+                <span><strong>Gender : {{details.Gender}}</strong></span>  <br>
+                <br>
+                <div>
+                    <li class="list-group-item" style="background-color:aliceblue;" 
+                        *ngFor="let accountDetails of details.customerAccounts">
+                        <span class="badge" style="float:right;" > 
+                            {{ accountDetails.accountstatus }}
+                        </span>
+                        <span><strong>Account Number : {{accountDetails.accountnumber}}</strong></span> | <br>
+                        <span><strong>Account Type : {{accountDetails.accounttype}}</strong></span> | <br>
+                        <span><strong>Account Balance : {{accountDetails.balance}}</strong></span>  <br>
+                    </li>
+                </div>
+                
+            </li>
+        </ul>
+    </div>
+</div>  

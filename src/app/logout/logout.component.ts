@@ -14,7 +14,7 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
     this.authservice.logout();
     alert("Thanks for using this ABCRetailBanking. Kindly close the browser window for security Reasons.");
-    window.location.href='./';
+    window.location.href='./home-component';
   }
 
 }

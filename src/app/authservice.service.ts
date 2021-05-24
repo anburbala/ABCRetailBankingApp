@@ -11,6 +11,7 @@ import { customer } from './model/customer';
 export class AuthserviceService {
   customers : customer;
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  
   constructor(private http: HttpClient,private router : Router) { 
 
   }
@@ -39,7 +40,7 @@ export class AuthserviceService {
   {
     localStorage.removeItem("isAdmin");
     localStorage.removeItem("isUserLoggedIn");
-    this.router.navigate(['/login-component']);
+    //this.router.navigate(['/login-component']);
   }
 
 

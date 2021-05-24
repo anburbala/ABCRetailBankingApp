@@ -1,10 +1,15 @@
-
+<!doctype html>
+<html lang="en">
+  <body>
 <div style="width: 500px; margin: auto;">
 <div *ngIf="submitted">
     <h3>You successfully created a Customer!</h3>
 </div>
+<!-- <h1 *ngIf="isAddMode">Add Customer</h1>
+<h1 *ngIf="!isAddMode">Edit Customer</h1> -->
 <div class="submit-form">
   <div *ngIf="!submitted">
+    <form (ngSubmit)="form.form.valid && createCustomer()" #form="ngForm" novalidate>
     <div class="form-group">
       <label for="customerName">CustomerName</label>
       <input
@@ -15,19 +20,37 @@
         [(ngModel)]="customer.customerName"
         customerName="customerName"
         placeholder="Enter Customer Name"
+        #customerName="ngModel"
+        [ngClass]="{'is-invalid' : form.submitted && customerName.invalid}"
+        name =  "customerName"
       />
+      <div *ngIf="form.submitted && customerName.invalid" class="invalid-feedback">
+        <div *ngIf="customerName.errors.required">Customer Name is required</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="Gender">Gender</label>
-      <select [(ngModel)]="customer.Gender"class="browser-default custom-select form-control"  placeholder="Select Gender">
+      <select [(ngModel)]="customer.Gender" class="browser-default custom-select form-control"  
+      placeholder="Select Gender"
+      #Gender="ngModel" 
+      name="Gender"
+       [ngClass]="{'is-invalid' : form.submitted && Gender.invalid}">
         <option value="Male">Male</option>
         <option value="Female">Female</option>  
         <option value="Transgender">Transgender</option>     
       </select>
+      <div *ngIf="form.submitted && Gender.invalid" class="invalid-feedback">
+        <div *ngIf="Gender.errors.required">Gender is required</div>
+      </div>
     </div>
      <div class="form-group">
       <label for="accounttype">Account Type</label>
-      <select [(ngModel)]="customerAccount.accounttype"class="browser-default custom-select form-control"  placeholder="Select Account Type">
+      <select [(ngModel)]="customerAccount.accounttype" 
+      #accounttype = "ngModel"
+      class="browser-default custom-select form-control"  
+      placeholder="Select Account Type"
+      name="accounttype"
+      [ngClass]="{'is-invalid' : form.submitted && accounttype.invalid}">
         <option value="Savings">Savings</option>
         <option value="Current">Current</option>     
         <option value="NRI">NRI</option>
@@ -35,6 +58,9 @@
         <option value="Recurring">Recurring</option>
         <option value="Salary">Salary</option>
       </select>
+      <div *ngIf="form.submitted && accounttype.invalid" class="invalid-feedback">
+        <div *ngIf="accounttype.errors.required">Account Type is required</div>
+      </div>
     </div>
       <div class="form-group">
         <label for="balance">Opening Balance Amount</label>
@@ -43,9 +69,15 @@
           id="balance"
           required
           [(ngModel)]="customerAccount.balance"
+          #balance = "ngModel"
           balance="balance"
           placeholder="Enter Opening Balance Amount"
+          [ngClass]="{'is-invalid' : form.submitted && balance.invalid}"
+          name="balance"
         />
+        <div *ngIf="form.submitted && balance.invalid" class="invalid-feedback">
+          <div *ngIf="balance.errors.required">Opening Balance is required</div>
+        </div>
       </div>
     <div class="form-group">
       <label for="customerAddress">Address</label>
@@ -54,9 +86,15 @@
         id="customerAddress"
         required
         [(ngModel)]="customer.customerAddress"
+        #customerAddress = "ngModel"
         customerAddress="customerAddress"
-        placeholder="Enter Address"
+        placeholder="Enter Customer Address"
+        [ngClass]="{'is-invalid' : form.submitted && customerAddress.invalid}"
+        name="customerAddress"
       />
+      <div *ngIf="form.submitted && customerAddress.invalid" class="invalid-feedback">
+        <div *ngIf="customerAddress.errors.required">Customer Address is required</div>
+      </div>
     </div>
     <div class="form-group">
         <label for="Phone">Phone</label>
@@ -65,9 +103,15 @@
           id="customerPhone"
           required
           [(ngModel)]="customer.customerPhone"
+          #customerPhone = "ngModel"
           customerPhone="customerPhone"
           placeholder="Enter Phone"
+          [ngClass]="{'is-invalid' : form.submitted && customerPhone.invalid}"
+          name="customerPhone"
         />
+        <div *ngIf="form.submitted && customerPhone.invalid" class="invalid-feedback">
+          <div *ngIf="customerPhone.errors.required">Customer Phone is required</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="customerEmailId">Email</label>
@@ -76,9 +120,16 @@
           id="customerEmailId"
           required
           [(ngModel)]="customer.customerEmailId"
+          #customerEmailId="ngModel"
           customerEmailId="customerEmailId"
           placeholder="Enter Email"
+          [ngClass]="{'is-invalid' : form.submitted && customerEmailId.invalid}"
+          name="customerEmailId"
         />
+        <div *ngIf="form.submitted && customerEmailId.invalid" class="invalid-feedback">
+          <div *ngIf="customerEmailId.errors.required">Customer Email ID is required</div>
+          <div *ngIf="customerEmailId.errors.customerEmailId">Email must be a valid</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -89,33 +140,41 @@
           [(ngModel)]="customer.password"
           password="password"
           placeholder="Enter Password"
+          #password = "ngModel"
+          [ngClass]="{'is-invalid' : form.submitted && password.invalid}"
+          name="password" 
         />
-      </div>
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password"
-          class="form-control"
-          id="password"
-          required
-          [(ngModel)]="customer.password"
-          password="password"
-          placeholder="Enter Password"
-        />
+        <div *ngIf="form.submitted && password.invalid" class="invalid-feedback">
+          <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
       </div>
       <div class="form-group">
         <label for="User">User Type</label>
-        <select [(ngModel)]="customer.userType"class="browser-default custom-select form-control"  placeholder="Select User Type">
+        <select [(ngModel)]="customer.userType" 
+        class="browser-default custom-select form-control"  
+        placeholder="Select User Type"
+        #userType="ngModel"
+        [ngClass]="{'is-invalid' : form.submitted && userType.invalid}"
+        name="userType" >
           <option value="Admin">Admin</option>
           <option value="Customer">Customer</option>  
         </select>
+        <div *ngIf="form.submitted && userType.invalid" class="invalid-feedback">
+          <div *ngIf="userType.errors.required">User Type is required</div>
+        </div>
       </div>
       <div class="text-center">
-    <button (click)="createCustomer()" class="btn btn-success mr-2">Create</button> 
+    <button class="btn btn-success mr-2">Create</button> 
     <button class="btn btn-secondary">Cancel</button>
     </div>
+  </form>
   </div>
 
   
 </div>
 
 </div>
+  </body>
+  
+</html>

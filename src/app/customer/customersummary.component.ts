@@ -8,7 +8,7 @@ import { CustomerService } from '../services/customer.service';
 })
 export class CustomersummaryComponent implements OnInit {
   customerdetails: any[];
-
+  filteredCustomerID = '';
   constructor(private customerService : CustomerService) { }
 
   ngOnInit(): void {

@@ -8,7 +8,7 @@ import { AccountSummaryComponent } from './account-summary/account-summary.compo
 import { MiniStatementComponent } from './mini-statement/mini-statement.component';
 import { DetailedStatementComponent } from './detailed-statement/detailed-statement.component';
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
+//import { HeaderComponent } from './header/header.component';
 import { CustomerComponent } from './customer/customer.component';
 import { SearchComponent } from './search/search.component';
 import { FundtransferComponent } from './fundtransfer/fundtransfer.component';
@@ -19,7 +19,8 @@ import { AuthserviceService } from './authservice.service';
 import { AuthenticationGuard } from './authentication.guard';
 import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
-
+import { FilterPipe } from './filter.pipe';
+import {StatementService} from './services/statement.service';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,14 @@ import { HomeComponent } from './home/home.component';
     MiniStatementComponent,
     DetailedStatementComponent,
     LoginComponent,
-    HeaderComponent,
+    //HeaderComponent,
     CustomerComponent,
     CustomersummaryComponent,
     SearchComponent,
     FundtransferComponent,
     LogoutComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     NgImageSliderModule,
   ],
-  providers: [CustomerService,AuthserviceService,AuthenticationGuard],
+  providers: [CustomerService,AuthserviceService,AuthenticationGuard,StatementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

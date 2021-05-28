@@ -2,11 +2,10 @@ import { Observable, of } from "rxjs";
 import { customer } from "../model/customer";
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { catchError} from 'rxjs/operators';
+import { catchError, map} from 'rxjs/operators';
 
 @Injectable()
 export class CustomerService{
-
     constructor(private http: HttpClient){
 
     }
@@ -16,6 +15,22 @@ export class CustomerService{
       .get<customer[]>('http://localhost:3000/customerdetails')
       .pipe(
         catchError(this.handleError<customer[]>('getCustomerDetails', [])));
+    }
+
+    getcustomerDetails(emailId : string)
+    {
+    return this.http
+      .get<customer[]>('http://localhost:3000/customerdetails?customerEmailId='+emailId)
+      .pipe(
+        catchError(this.handleError<customer[]>('getCustomerDetails', [])));
+    }
+    
+    UpdateCustomerAccountDetails(id:any, value:customer)
+    {
+      return this.http
+      .put<customer[]>('http://localhost:3000/customerdetails/'+id, value)
+      .pipe(
+       catchError(this.handleError<customer[]>('UpdateCcustomerAccountDetails', [])))
     }
     
     //Store Customers method (Using PUT / POST method)

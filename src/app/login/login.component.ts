@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   formData: FormGroup;
   email: string;
   password: string;
+  UserType: string;
  
   constructor(private authservice : AuthserviceService, private router : Router) { }
 
@@ -23,24 +24,35 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSubmit(data: any) {
-    
+    this.UserType = '';
     this.email = data.email;
     this.password = data.password;
     this.authservice.login(this.email,this.password)
     .subscribe(resp =>
       {
-        localStorage.setItem("isAdmin",resp.userType === "Admin" ? "true" : "false");
-        localStorage.setItem("isUserLoggedIn","true");
-        this.authservice.isUserLoggedIn.next(true);
+        this.UserType =  resp.userType;
         
-        if(resp.userType === "Admin") 
-        {
-          this.router.navigate(['/customersummary-component']); 
-        }
-        else{
-          this.router.navigate(['/account-summary-component']); 
-        }
+        localStorage.setItem("isUserLoggedIn","true");
+        localStorage.setItem("LoggedInEmailID",data.email);
+        localStorage.setItem("privilage",resp.userType);
+        this.authservice.isUserLoggedIn.next(true);
       });
-  }
 
+        //this.router.navigate(['/account-summary-component']);
+        if(this.UserType === "Admin") 
+        {
+          localStorage.setItem("isAdmin","true");
+          //localStorage.setItem("privilage","Admin");
+          this.router.navigate(['/customersummary-component']); 
+          //this.router.navigate(['/account-summary-component']);
+        }
+        else if (this.UserType === "User") {
+          localStorage.setItem("isAdmin","false");
+          //localStorage.setItem("privilage","User");
+          //this.router.navigate(['/customersummary-component']); 
+        this.router.navigate(['/account-summary-component']); 
+        }
+  }
 }
+
+

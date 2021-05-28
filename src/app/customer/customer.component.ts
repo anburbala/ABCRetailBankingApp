@@ -60,7 +60,7 @@ export class CustomerComponent implements OnInit {
      return this.accountData.push(accountInfo);
     }
 
-    //, format: string
+    //format: string
     GenerateAccountNumber(length: number): number {
       var randomChars = '0123456789';
       var result = '';

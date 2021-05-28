@@ -1,12 +1,11 @@
 export interface statement{
-    transactionDate : Date,
-    transactionRemarks : string,
-    transactionType : string,
-    balanceAsOnDate : number,
-    transactionAmount : number,
-    transactionTimeStamp : Date,
-    transactionStatus : string
     fromAccountNumber : number,
     toAccountNumber : number,
+    transactionType : string,
+    transactionAmount : number,
+    transactionDate : Date,
+    transactionStatus : string
+    balanceAsOnDate : number,
+    transactionRemarks : string,
     transactionid : number
 }

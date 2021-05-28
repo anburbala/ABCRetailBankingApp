@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../services/customer.service';
 
 @Component({
   selector: 'app-account-summary',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-summary.component.css']
 })
 export class AccountSummaryComponent implements OnInit {
-
-  constructor() { }
-
+  customerdetails: any[];
+  LoggedInEmailID : string ='';
+  constructor(private customerService : CustomerService) { }
+  
   ngOnInit(): void {
+    this.readAllCustomers();
   }
 
+  readAllCustomers(){
+    this.customerdetails=[];
+    this.LoggedInEmailID = localStorage.getItem("LoggedInEmailID").toString();
+      this.customerService.getcustomerDetails(this.LoggedInEmailID)
+      .subscribe((resp:any) => {
+            (error: any) => console.log(error);
+              for (const data of resp) {
+                  this.customerdetails.push(data);
+              }
+            console.log(this.customerdetails);
+          });
+  }
 }

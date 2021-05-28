@@ -1,1 +1,124 @@
-<p>fundtransfer works!</p>
+<div class="container">
+    <header style="text-align: center;"><h3><b>Fund Transfer Form</b></h3></header>
+<div class="submit-form">
+    <form (ngSubmit)="form.form.valid && createFundTransfer()" #form="ngForm" novalidate>
+        <div class="form-group">
+            <label for="fromAccountNumber">From Account Number</label>
+            <select [(ngModel)]="statement.fromAccountNumber" class="browser-default custom-select form-control"  
+            placeholder="Select From Account Number"
+            #fromAccountNumber="ngModel" 
+            name="fromAccountNumber"
+            fromAccountNumber="fromAccountNumber"
+             [ngClass]="{'is-invalid' : form.submitted && fromAccountNumber.invalid}"
+             (change)="getBalanceAsOnDate(fromAccountNumber.value)" required>
+             <option value="undefined" selected disabled>Select From Account Number</option>
+             <option *ngFor="let accountNumbers of fromAccountNumbers" [ngValue]="accountNumbers">{{accountNumbers}}</option>
+            </select>
+            <div *ngIf="form.submitted && fromAccountNumber.invalid" class="invalid-feedback">
+              <div *ngIf="fromAccountNumber.errors.required">From Account number is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="balanceAsOnDate">Balance As on Date</label>
+            <input
+              class="form-control"
+              id="balanceAsOnDate"
+              [(ngModel)]="balanceAmount"
+              #balanceAsOnDate = "ngModel"
+              name="balanceAsOnDate"
+              value="{{balanceAmount}}"
+              disabled
+            />
+          </div>
+        <div class="form-group">
+            <label for="toAccountNumber">To Account Number</label>
+            <select [(ngModel)]="statement.toAccountNumber" class="browser-default custom-select form-control"  
+            placeholder="Select To Account Number"
+            #toAccountNumber="ngModel" 
+            name="toAccountNumber"
+            toAccountNumber="toAccountNumber"
+            (change)=getToCustomerAccountDetails(toAccountNumber.value)
+             [ngClass]="{'is-invalid' : form.submitted && toAccountNumber.invalid}" required>
+             <option value="undefined" selected disabled>Select To Account Number</option>
+             <option *ngFor="let toAccountNumbers of toAccountNumbers" [ngValue]="toAccountNumbers">{{toAccountNumbers}}</option>
+            </select>
+            <div *ngIf="form.submitted && toAccountNumber.invalid" class="invalid-feedback">
+              <div *ngIf="toAccountNumber.errors.required">To Account number is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="transactionType">Transaction Type</label>
+            <select [(ngModel)]="statement.transactionType" class="browser-default custom-select form-control"  
+            placeholder="Select Transaction Type"
+            #transactionType="ngModel" 
+            name="transactionType"
+            transactionType="transactionType"
+             [ngClass]="{'is-invalid' : form.submitted && transactionType.invalid}" required>
+             <option value="undefined" selected disabled>Select Type Of Transfer</option>
+              <option value="IMPS">IMPS</option>
+              <option value="NEFT">NEFT</option>  
+            </select>
+            <div *ngIf="form.submitted && transactionType.invalid" class="invalid-feedback">
+              <div *ngIf="transactionType.errors.required">Transaction Type is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="transactionAmount">Transaction Amount</label>
+            <input
+              class="form-control"
+              id="transactionAmount"
+              required
+              [(ngModel)]="statement.transactionAmount"
+              #transactionAmount = "ngModel"
+              name="transactionAmount"
+              transactionAmount ="transactionAmount"
+              placeholder="Enter Transaction Amount"
+              [ngClass]="{'is-invalid' : form.submitted && transactionAmount.invalid}"
+            />
+            <div *ngIf="form.submitted && transactionAmount.invalid" class="invalid-feedback">
+              <div *ngIf="transactionAmount.errors.required">Transaction Amount is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="transactionDate">Transaction Date</label>
+            <input
+            type="date"
+              class="form-control"
+              id="transactionDate"
+              required
+              [(ngModel)]="statement.transactionDate"
+              #transactionDate = "ngModel"
+              name="transactionDate"
+              placeholder="Enter Transaction Date"
+              transactionDate ="transactionDate"
+              [value]="currentDate"
+              [ngClass]="{'is-invalid' : form.submitted && transactionDate.invalid}"
+            />
+            <div *ngIf="form.submitted && transactionDate.invalid" class="invalid-feedback">
+              <div *ngIf="transactionDate.errors.required">Transaction Date is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="transactionRemarks">Transaction Remarks</label>
+            <input
+              class="form-control"
+              id="transactionRemarks"
+              required
+              [(ngModel)]="statement.transactionRemarks"
+              #transactionRemarks = "ngModel"
+              transactionRemarks = "transactionRemarks"
+              placeholder="Enter Comments"
+              [ngClass]="{'is-invalid' : form.submitted && transactionRemarks.invalid}"
+              name="transactionRemarks"
+            />
+            <div *ngIf="form.submitted && transactionRemarks.invalid" class="invalid-feedback">
+              <div *ngIf="transactionRemarks.errors.required">Transaction Remarks is required</div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-success mr-2">Transfer</button> 
+            <button class="btn btn-secondary" type="reset">Cancel</button>
+            </div>
+    </form>
+</div>
+</div>

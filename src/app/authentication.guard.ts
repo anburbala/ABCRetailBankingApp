@@ -16,20 +16,25 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     let url: string = state.url;
+          return this.checkLogin(route, url);
+  }
 
-          return this.checkLogin(url);
-      }
-
-      checkLogin(url: string): true | UrlTree {
+      checkLogin(route: ActivatedRouteSnapshot, url: string): true | UrlTree {
          console.log("Url: " + url)
-         let val: string = localStorage.getItem('isAdmin');
-
-         if(val != null && val == "true"){
-            if(url == "/login-component")
-               this.router.parseUrl('/customersummary-component');
+         //let val: string = localStorage.getItem('isAdmin');
+         let val: string = localStorage.getItem('privilage');
+         if(val != null ){
+            if(route.data.role && route.data.role.indexOf(val) === -1 && url == "/login-component" ){   //&& val == "true" 
+                  this.router.parseUrl('/customersummary-component');
+               }
+               else if(route.data.role && route.data.role.indexOf(val) === -1 && url == "/login-component" ) //&& val == "false"
+               {
+                  this.router.parseUrl('/account-summary-component');
+               }
             else 
                return true;
-         } else {
+          }
+          else {
             return this.router.parseUrl('/login-component');
          }
       }

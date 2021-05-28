@@ -12,7 +12,7 @@
           "accountnumber": 7721228623,
           "accounttype": "Savings",
           "accountstatus": "Active",
-          "balance": "500"
+          "balance": 47500
         }
       ],
       "Gender": "Male",
@@ -29,15 +29,15 @@
       "customerstatus": "Active",
       "customerAccounts": [
         {
-          "accountnumber": 86867634,
+          "accountnumber": 8686763456,
           "accounttype": "Salary",
           "accountstatus": "Active",
-          "balance": "15000"
+          "balance": 18000
         }
       ],
       "Gender": "Male",
       "password": "anu@123",
-      "userType": "customer",
+      "userType": "User",
       "id": 2
     },
     {
@@ -58,9 +58,103 @@
       "Gender": "Male",
       "password": "cus@123",
       "confirmPassword": "",
-      "userType": "Customer",
+      "userType": "User",
       "id": 3
+    },
+    {
+      "customerId": 609596,
+      "customerName": "test cust new",
+      "customerAddress": "Test Address",
+      "customerEmailId": "poi@poi.com",
+      "customerPhone": "9123456789",
+      "customerstatus": "Active",
+      "customerAccounts": [
+        {
+          "accountnumber": 4115333181,
+          "accounttype": "Savings",
+          "accountstatus": "Active",
+          "balance": "60000"
+        }
+      ],
+      "Gender": "Male",
+      "password": "qwerty",
+      "confirmPassword": "",
+      "userType": "Customer",
+      "id": 4
     }
   ],
-  "transactions": []
+  "transactions": [
+    {
+      "transactionid": 738723,
+      "transactionAmount": "500",
+      "balanceAsOnDate": 47500,
+      "fromAccountNumber": "7721228623(abc@abc.com)",
+      "toAccountNumber": "8686763456(def@def.com)",
+      "transactionDate": "2021-05-28",
+      "transactionStatus": "Completed",
+      "transactionRemarks": "test Comments",
+      "transactionType": "NEFT",
+      "id": 1
+    },
+    {
+      "transactionid": 651022,
+      "transactionAmount": "500",
+      "balanceAsOnDate": 18500,
+      "fromAccountNumber": "8686763456(def@def.com)",
+      "toAccountNumber": "7721228623(abc@abc.com)",
+      "transactionDate": "2021-05-28",
+      "transactionStatus": "Completed",
+      "transactionRemarks": "test Comments",
+      "transactionType": "NEFT",
+      "id": 2
+    },
+    {
+      "transactionid": 723262,
+      "transactionAmount": "500",
+      "balanceAsOnDate": 18500,
+      "fromAccountNumber": "8686763456(def@def.com)",
+      "toAccountNumber": "7721228623(abc@abc.com)",
+      "transactionDate": "2021-05-28",
+      "transactionStatus": "Completed",
+      "transactionRemarks": "test Comments",
+      "transactionType": "NEFT",
+      "id": 3
+    },
+    {
+      "transactionid": 653365,
+      "transactionAmount": "500",
+      "balanceAsOnDate": 18500,
+      "fromAccountNumber": "8686763456(def@def.com)",
+      "toAccountNumber": "7721228623(abc@abc.com)",
+      "transactionDate": "2021-05-28",
+      "transactionStatus": "Completed",
+      "transactionRemarks": "test Comments",
+      "transactionType": "NEFT",
+      "id": 4
+    },
+    {
+      "transactionid": 575697,
+      "transactionAmount": "500",
+      "balanceAsOnDate": 18500,
+      "fromAccountNumber": "8686763456(def@def.com)",
+      "toAccountNumber": "7721228623(abc@abc.com)",
+      "transactionDate": "2021-05-28",
+      "transactionStatus": "Completed",
+      "transactionRemarks": "test Comments",
+      "transactionType": "NEFT",
+      "id": 5
+    },
+    {
+      "transactionid": 506159,
+      "transactionAmount": "500",
+      "balanceAsOnDate": 18500,
+      "fromAccountNumber": "8686763456(def@def.com)",
+      "toAccountNumber": "7721228623(abc@abc.com)",
+      "transactionDate": "2021-05-28",
+      "transactionStatus": "Completed",
+      "transactionRemarks": "test Comments",
+      "transactionType": "NEFT",
+      "id": 6
+    }
+  ]
 }

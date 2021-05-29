@@ -4,23 +4,23 @@
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <ul class="list-group">
-            
-            <li class="list-group-item" style="background-color:lightblue;"
+            <li class="list-group-item" style="background-color:lightgoldenrodyellow;"
             *ngFor="let details of customerdetails">
-            <div>
-                <li class="list-group-item" style="background-color:aliceblue;" 
-                            *ngFor="let accountDetails of details.customerAccounts">
-                            <span><strong>Account Number : {{accountDetails.accountnumber}}</strong></span> | <br>
-                            <span><strong>Account Type : {{accountDetails.accounttype}}</strong></span> | <br>
-                            <span><strong>Account Balance : {{accountDetails.balance}}</strong></span>  <br>
-                </li>
-            </div>
+                <div>
+                    <li class="list-group-item" style="background-color:beige;" 
+                                *ngFor="let accountDetails of details.customerAccounts">
+                                <span><strong>Account Number : {{accountDetails.accountnumber}}</strong></span> | <br>
+                                <span><strong>Account Type : {{accountDetails.accounttype}}</strong></span> | <br>
+                                <span><strong>Account Balance : {{accountDetails.balance}}</strong></span>  <br>
+                    </li>
+                </div>
             </li>
         </ul>
-        <div style="text-align: right;">
-            <a routerLink="mini-statement-component" class="nav-link fas fa-align-right"><b>Mini Statement</b></a>
-           | <a routerLink="detailed-statement-component" class="nav-link fas fa-align-right"><b>Detailed Statement</b></a>
+        <div style="float:right">
+            <a (click)="showhideMinistatementComponenet()" style="cursor: pointer;" class="nav-link" name="Mini Statement"><b>Mini Statement</b></a>
         </div>
     </div>
-    
 </div>  
+<div>
+    <app-mini-statement *ngIf="visible"></app-mini-statement>
+</div>

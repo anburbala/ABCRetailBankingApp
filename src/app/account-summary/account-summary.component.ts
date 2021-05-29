@@ -9,6 +9,7 @@ import { CustomerService } from '../services/customer.service';
 export class AccountSummaryComponent implements OnInit {
   customerdetails: any[];
   LoggedInEmailID : string ='';
+  visible:boolean = false;
   constructor(private customerService : CustomerService) { }
   
   ngOnInit(): void {
@@ -26,5 +27,10 @@ export class AccountSummaryComponent implements OnInit {
               }
             console.log(this.customerdetails);
           });
+  }
+
+  showhideMinistatementComponenet()
+  {
+    this.visible = this.visible?false:true;
   }
 }

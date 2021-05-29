@@ -26,6 +26,8 @@ export class FundtransferComponent implements OnInit {
   toCustomerAccountDetails : any[]=[];
   fromCustomerAccountDetails : any[]=[];
   transactionAmount: any;
+  transactionid: number;
+  balanceAmountAsOnDateForToAccountNumber: any;
   
   constructor(private customerService : CustomerService, private statementservice:StatementService) { }
 
@@ -45,6 +47,7 @@ export class FundtransferComponent implements OnInit {
     transactionRemarks:'',
     transactionStatus:'',
     transactionid:'',
+    customerEmailId :'',
   }
 
   submitted = false;
@@ -135,8 +138,9 @@ export class FundtransferComponent implements OnInit {
   }
 
   createFundTransfer(){
-    let transaction : statement = {
-      transactionid : this.getRandomNumberBetween(this.min, this.max),
+    this.transactionid = this.getRandomNumberBetween(this.min, this.max);
+    let firstTransaction : statement = {
+      transactionid : this.transactionid,
       transactionAmount : this.statement.transactionAmount,
       balanceAsOnDate : this.balanceAmount,
       fromAccountNumber : this.statement.fromAccountNumber,
@@ -144,40 +148,71 @@ export class FundtransferComponent implements OnInit {
       transactionDate : this.statement.transactionDate,
       transactionStatus : 'Completed',
       transactionRemarks : this.statement.transactionRemarks,
-      transactionType : this.statement.transactionType
+      transactionType : this.statement.transactionType,
+      customerEmailId : localStorage.getItem("LoggedInEmailID").toString(),
+      creditorDebit : "Dr"
     };
 
-    if(transaction.transactionAmount < transaction.balanceAsOnDate){
-      this.statementservice.createTransaction(transaction)
+    for(const data of this.toCustomerAccountDetails){
+     for(const toAccountnumber of data.customerAccounts){
+        this.balanceAmountAsOnDateForToAccountNumber = toAccountnumber.balance;
+     }
+    }
+
+    let secondTransaction : statement = {
+      transactionid : this.transactionid,
+      transactionAmount : this.statement.transactionAmount,
+      balanceAsOnDate : this.balanceAmountAsOnDateForToAccountNumber,
+      fromAccountNumber : this.statement.fromAccountNumber,
+      toAccountNumber : this.statement.toAccountNumber,
+      transactionDate : this.statement.transactionDate,
+      transactionStatus : 'Completed',
+      transactionRemarks : this.statement.transactionRemarks,
+      transactionType : this.statement.transactionType,
+      customerEmailId : this.emailIdToAccount,
+      creditorDebit: "Cr",
+    };
+
+    if(firstTransaction.transactionAmount < firstTransaction.balanceAsOnDate){
+      this.statementservice.createTransaction(firstTransaction)
       .subscribe(
           response => {
               this.submitted = true;
               console.log(response);
-              if(this.submitted){
-                this.emailIdFromAccount = localStorage.getItem("LoggedInEmailID").toString();
-        
-                //Debit balance Functionality
-                for(const data of this.fromCustomerAccountDetails){
-                  this.fromid = data.id
-                  for(const account of data.customerAccounts){
-                        account.balance = (account.balance) - (this.statement.transactionAmount);
-                  }
-                }
-                console.log(this.fromCustomerAccountDetails);
-                this.updateFromCustomer(this.fromid,this.fromCustomerAccountDetails[0])
-        
-               //Credit Balance Functionality
-               for(const data of this.toCustomerAccountDetails){
-                    this.toid = data.id;
-                   for(const toAccountnumber of data.customerAccounts){
-                       toAccountnumber.balance = +toAccountnumber.balance + +this.statement.transactionAmount;
+              //second Transaction Insert
+              this.statementservice.createTransaction(secondTransaction)
+              .subscribe(
+                res => {
+                  console.log(res);
+                  if(this.submitted){
+                    this.emailIdFromAccount = localStorage.getItem("LoggedInEmailID").toString();
+            
+                    //Debit balance Functionality
+                    for(const data of this.fromCustomerAccountDetails){
+                      this.fromid = data.id
+                      for(const account of data.customerAccounts){
+                            account.balance = (account.balance) - (this.statement.transactionAmount);
+                      }
+                    }
+                    console.log(this.fromCustomerAccountDetails);
+                    this.updateFromCustomer(this.fromid,this.fromCustomerAccountDetails[0])
+            
+                   //Credit Balance Functionality
+                   for(const data of this.toCustomerAccountDetails){
+                        this.toid = data.id;
+                       for(const toAccountnumber of data.customerAccounts){
+                           toAccountnumber.balance = +toAccountnumber.balance + +this.statement.transactionAmount;
+                       }
                    }
-               }
-               console.log(this.toCustomerAccountDetails);
-               this.updateToCustomer(this.toid, this.toCustomerAccountDetails[0])
-                alert("Trasaction Done.");
-                window.location.href='./account-summary-component';
-              }
+                   console.log(this.toCustomerAccountDetails);
+                   this.updateToCustomer(this.toid, this.toCustomerAccountDetails[0])
+                    alert("Trasaction Done.");
+                    window.location.href='./account-summary-component';
+                  }
+                },
+                error => {
+                  this.error.next(error);
+            });
           },
           error => {
             this.error.next(error);

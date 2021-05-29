@@ -1,1 +1,38 @@
-<p>detailed-statement works!</p>
+
+<div class="container" id="content" #content>
+    <header style="text-align: center;"><h3><b>Detailed Statement </b></h3></header>
+    <br>
+    <div style="float:right">
+        <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">  
+    </div>
+    <br>
+    <br>
+<div class='table-responsive'>
+    <table class='table' id="my-table">
+        <thead style="background-color:beige;">
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Transaction Amount</th>
+                <th>Transaction Type</th>
+                <th>Credit / Debit</th>
+                <th>Transaction Status</th>
+                <th>Balance As on Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactionsDetailsByCustomer;">
+                <td>{{transaction.transactionDate}}</td>
+                <td *ngIf="transaction.creditorDebit === 'Dr'">  {{transaction.toAccountNumber}} /  {{transaction.transactionRemarks}}</td>
+                <td *ngIf="transaction.creditorDebit === 'Cr'">  {{transaction.fromAccountNumber}} /  {{transaction.transactionRemarks}}</td>
+                <td>{{transaction.transactionAmount}}</td>
+                <td>{{transaction.transactionType}}</td>
+                <td>{{transaction.creditorDebit}}</td>
+                <td>{{transaction.transactionStatus}}</td>
+                <td>{{transaction.balanceAsOnDate}}</td>
+            </tr>
+        </tbody>
+      </table>
+   </div> 
+  
+</div>

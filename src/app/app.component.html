@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse">
           <div *ngIf="isUserLoggedIn">
           <ul class="nav navbar-nav">
-              <li class="nav-item"><a class="nav-link" *ngIf="isAdmin"   routerLink="/customer-component" 
+              <li class="nav-item"><a class="nav-link"  *ngIf="isAdmin"   routerLink="/customer-component" 
               routerLinkActive="active"><b>Customer Management</b></a></li>
               <li class="nav-item"><a class="nav-link" *ngIf="isAdmin"    routerLink="/customersummary-component" 
                 routerLinkActive="active"><b>Customer Summary</b></a></li>
@@ -17,6 +17,10 @@
                   routerLinkActive="active"><b>Account Summary</b></a></li>
                 <li class="nav-item"><a class="nav-link"  *ngIf="!isAdmin"  routerLink="/fundtransfer-component" 
                   routerLinkActive="active"><b>Fund Transfer</b></a></li>
+                  <!-- <li class="nav-item"><a class="nav-link"  *ngIf="!isAdmin"  routerLink="/mini-statement-component" 
+                    routerLinkActive="active"><b>Mini Statement</b></a></li> -->
+                    <li class="nav-item"><a class="nav-link"  *ngIf="!isAdmin"  routerLink="/detailed-statement-component" 
+                        routerLinkActive="active"><b>Detailed Statement</b></a></li>
           </ul>
         </div>
         <div style="float:right;">

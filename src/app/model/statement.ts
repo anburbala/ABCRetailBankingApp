@@ -7,5 +7,7 @@ export interface statement{
     transactionStatus : string
     balanceAsOnDate : number,
     transactionRemarks : string,
-    transactionid : number
+    transactionid : number,
+    customerEmailId : string,
+    creditorDebit : string,
 }

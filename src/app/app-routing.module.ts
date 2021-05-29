@@ -25,7 +25,6 @@ const routes: Routes = [
 { path: 'customer-component', component: CustomerComponent,canActivate : [AuthenticationGuard] , data:{role : "Admin"}},
 { path: 'customersummary-component', component: CustomersummaryComponent,canActivate : [AuthenticationGuard], data:{role : "Admin"}},
 {path: 'fundtransfer-component', component:FundtransferComponent, canActivate:[AuthenticationGuard], data:{role : "User"}},
-{ path: 'mini-statement-component', component: MiniStatementComponent , data:{role : "User"}},
 { path: 'detailed-statement-component', component: DetailedStatementComponent , data:{role : "User"}},
 ];
 

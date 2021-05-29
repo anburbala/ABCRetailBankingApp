@@ -1,1 +1,18 @@
-<p>mini-statement works!</p>
+<div class="container">
+    <header style="text-align: center;"><h3><b>Mini Statement </b></h3></header>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <ul class="list-group">
+            <li class="list-group-item" style="background-color:beige;"
+            *ngFor="let details of transactionsDetailsByCustomer">
+            <span class="badge" style="float:right;" > 
+                {{details.creditorDebit}} : {{details.transactionAmount}} 
+               </span>
+            <span><strong>{{details.transactionType}} /  {{details.transactionid}} /  {{details.transactionRemarks}}</strong></span>  <br>
+            <span><strong> {{details.transactionDate}}</strong></span> <br>
+            </li>
+        </ul>
+    </div>
+    
+</div>  

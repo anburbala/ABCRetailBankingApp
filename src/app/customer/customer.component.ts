@@ -9,7 +9,6 @@ import { CustomerService } from '../services/customer.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  //isAddMode : boolean = false;
   accountData : customerAccount[] = [];
 
   error = new Subject<string>();
@@ -26,7 +25,6 @@ export class CustomerComponent implements OnInit {
     customerPhone: '',
     customerEmailId:'',
     password : '',
-    confirmPassword : '',
     customerStatus: '',
     customerId:'',
     userType:'',
@@ -82,7 +80,6 @@ export class CustomerComponent implements OnInit {
           customerAccounts : this.accountData,
           Gender : this.customer.Gender,
           password : this.customer.password,
-          confirmPassword : this.customer.confirmPassword,
           userType : this.customer.userType,
         };
 

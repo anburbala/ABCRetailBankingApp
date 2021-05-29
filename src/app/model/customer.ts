@@ -7,8 +7,7 @@ export interface customer{
     customerPhone : string,
     customerEmailId : string,
     Gender : string,
-    password : string,
-    confirmPassword : string,
+    password : string
     userType : string,
 }
 

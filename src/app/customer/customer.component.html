@@ -5,8 +5,6 @@
 <div *ngIf="submitted">
     <h3>You successfully created a Customer!</h3>
 </div>
-<!-- <h1 *ngIf="isAddMode">Add Customer</h1>
-<h1 *ngIf="!isAddMode">Edit Customer</h1> -->
 <div class="submit-form">
   <div *ngIf="!submitted">
     <form (ngSubmit)="form.form.valid && createCustomer()" #form="ngForm" novalidate>
